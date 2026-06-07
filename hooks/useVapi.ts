@@ -292,7 +292,9 @@ export function useVapi(book: IBook) {
           ? String(currentBookId)
           : "000000000000000000000000";
 
-      const session = await startVoiceSession(validBookId, voiceKey);
+      // ✅ PERBAIKAN: Urutan yang benar (userId, lalu bookId)
+const session = await startVoiceSession(userId!, book._id);
+
       sessionIdRef.current =
         (session as any)?._id || (session as any)?.id || null;
 
